@@ -66,46 +66,79 @@ Node* levelOrder(Node* root){
     }
 }
 
-void reverseLevelOrder(Node* root){
-    if(root == NULL) return;
+// void reverseLevelOrder(Node* root){
+//     if(root == NULL) return;
+
+//     queue <Node*> q;
+//     stack <vector<int>> s;
+
+//     q.push(root);
+
+//     while(!q.empty()){
+//         int levelSize = q.size();
+//         vector <int> currLevel;
+
+//         for(int i = 0; i < levelSize; i++){
+//             Node* temp = q.front();
+//             q.pop();
+
+//             currLevel.push_back(temp -> data);
+
+//             if(temp -> left){
+//                 q.push(temp -> left);
+//             }
+//             if(temp -> right){
+//                 q.push(temp -> right);
+//             }
+//         }
+
+//         s.push(currLevel);
+
+//     }
+
+//     while(!s.empty()){
+//             vector <int> levels = s.top();
+//             s.pop();
+
+//             for(int val : levels){
+//                 cout << val << " ";
+//             }
+//             cout << endl;
+//         }
+    
+// }
+
+void reverseTraversal(Node* root){
+    if(root == NULL) {
+        return;
+    }
 
     queue <Node*> q;
-    stack <vector<int>> s;
+    stack <Node*> s;
 
     q.push(root);
 
     while(!q.empty()){
-        int levelSize = q.size();
-        vector <int> currLevel;
+        Node* temp = q.front();
+        
+        s.push(temp);
+        q.pop();
 
-        for(int i = 0; i < levelSize; i++){
-            Node* temp = q.front();
-            q.pop();
-
-            currLevel.push_back(temp -> data);
-
-            if(temp -> left){
-                q.push(temp -> left);
-            }
-            if(temp -> right){
-                q.push(temp -> right);
-            }
+        if(temp -> right){
+            q.push(temp -> right);
         }
 
-        s.push(currLevel);
-
+        if(temp -> left){
+            q.push(temp -> left);
+        }
     }
 
-    while(!s.empty()){
-            vector <int> levels = s.top();
-            s.pop();
+    // print the result
 
-            for(int val : levels){
-                cout << val << " ";
-            }
-            cout << endl;
-        }
-    
+    while(!s.empty()){
+        cout << s.top() -> data << " ";
+        s.pop();
+    }
 }
 
 // 1 3 7 -1 -1 11 -1 -1 5 17 -1 -1 -1
@@ -115,6 +148,6 @@ int main(){
     Node* root = NULL;
 
     buildTree(root);
-    reverseLevelOrder(root);
+    reverseTraversal(root);
     return 0;
 }

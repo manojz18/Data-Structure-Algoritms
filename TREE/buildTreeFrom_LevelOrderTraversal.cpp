@@ -67,9 +67,39 @@ class Node{
 
 // 1 3 7 -1 -1 11 -1 -1 5 17 -1 -1 -1
 
-void buildTreeFrom_levelOrder(Node* &root){
+// void buildTreeFrom_levelOrder(Node* &root){
+//     queue <Node*> q;
+//     cout << "Enter data of root Node: ";
+//     int data;
+//     cin >> data;
+//     root = new Node(data);
+//     q.push(root);
+
+//     while(!q.empty()){
+//         Node* temp = q.front();
+//         q.pop();
+
+//         cout << "Enter the left node of: " << temp -> data << endl;
+//         int leftData;
+//         cin >> leftData;
+//         if(leftData != -1){
+//             temp -> left = new Node(leftData);
+//             q.push(temp -> left);
+//         }
+
+//         cout << "Enter the right node of: " << temp -> data << endl;
+//         int rightData;
+//         cin >> rightData;
+//         if(rightData != -1){
+//             temp -> right = new Node(rightData);
+//             q.push(temp -> right);
+//         }
+//     }
+// }
+
+void buildTreeFromLevelOrder(Node* root){
     queue <Node*> q;
-    cout << "Enter data of root Node: ";
+    cout << "Enter the root data: ";
     int data;
     cin >> data;
     root = new Node(data);
@@ -79,7 +109,7 @@ void buildTreeFrom_levelOrder(Node* &root){
         Node* temp = q.front();
         q.pop();
 
-        cout << "Enter the left node of: " << temp -> data << endl;
+        cout << "Enter the data to left of: " << temp -> data << endl;
         int leftData;
         cin >> leftData;
         if(leftData != -1){
@@ -87,20 +117,22 @@ void buildTreeFrom_levelOrder(Node* &root){
             q.push(temp -> left);
         }
 
-        cout << "Enter the right node of: " << temp -> data << endl;
+        cout << "Enter the data to Right of: " << temp -> data << endl;
         int rightData;
-        cin >> rightData;
+        cin>>rightData;
+
         if(rightData != -1){
             temp -> right = new Node(rightData);
             q.push(temp -> right);
         }
     }
+
 }
 
 int main(){
 
     Node* root = NULL;
 
-    buildTreeFrom_levelOrder(root);
+    buildTreeFromLevelOrder(root);
     return 0;
 }
