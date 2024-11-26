@@ -15,25 +15,25 @@ class Node{
     }
 };
 
-// Node* buildTree(Node* &root){
-//     int data;
-//     cout << "Enter data: ";
-//     cin >> data;
+Node* buildTree(Node* &root){
+    int data;
+    cout << "Enter data: ";
+    cin >> data;
 
-//     if(data == -1){
-//         return NULL;
-//     }
+    if(data == -1){
+        return NULL;
+    }
 
-//     root = new Node(data);
+    root = new Node(data);
 
-//     cout << "Enter the data to the left Node of " << data << endl;
-//     root -> left = buildTree(root -> left);
+    cout << "Enter the data to the left Node of " << data << endl;
+    root -> left = buildTree(root -> left);
 
-//     cout << "Enter the data to the Right Node of " << data << endl;
-//     root -> right = buildTree(root -> right);
+    cout << "Enter the data to the Right Node of " << data << endl;
+    root -> right = buildTree(root -> right);
 
-//     return root;
-// }
+    return root;
+}
 
 // Node* levelOrder(Node* root){
 //     queue <Node*> q;
